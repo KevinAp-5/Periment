@@ -2,9 +2,15 @@ import json
 
 
 class Perimemo:
-    def __init__(self):
+    def __init__(self, toshow=[], rang=119):
         self.file = '/home/kevin/python/perimemo/PeriodicTableJSON.json'
-        self.show = ['name', 'number', 'symbol']
+
+        if toshow != list:
+            self.toshow = []
+            self.toshow.append(toshow)
+        else:
+            self.toshow = toshow
+        self.rang = rang
 
     def practice(self):
         with open(self.file) as jsonnn:
@@ -23,5 +29,3 @@ class Perimemo:
 
             elif guess_number != number:
                 print('Nice try')
-
-    def show(self):
