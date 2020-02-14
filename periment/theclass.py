@@ -12,7 +12,10 @@ class Periment:
         self.rang = rang
 
     def show(self):
-        if self.toshow == []:
+        def a(s):
+            return base[self.toshow[s]]
+
+        if self.toshow == ['']:
             self.toshow = ['name', 'symbol', 'number']
 
         with open(self.file) as jsonnn:
@@ -20,5 +23,6 @@ class Periment:
 
         for counter in range(self.rang):
             base = data['elements'][counter]
-            items = base[self.toshow[0]]
-            print(items)
+            for c in range(len(self.toshow)):
+                print(a(c))
+            print('')
