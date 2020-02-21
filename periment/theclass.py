@@ -2,15 +2,15 @@ import json
 
 
 class Periment:
-    def __init__(self, toshow='', rang=118, category=False):
+    def __init__(self, toshow='', rang=118):
         # Json path
         self.file = '/home/kevin/Periment/periment/PeriodicTableJSON.json'
-        self.toshow = toshow
+        self.show = toshow
         self.rang = rang
 
     def show(self):
-        if self.toshow == [''] or self.toshow == '':
-            self.toshow = ['name', 'symbol', 'number', 'category', 'summary']
+        if self.show == [''] or self.show == '':
+            self.show = ['name', 'symbol', 'number', 'category', 'summary']
 
         with open(self.file) as jsonnn:
             data = json.load(jsonnn)
@@ -20,10 +20,10 @@ class Periment:
             base = data['elements'][counter]
             print('-' * 30)
             # checks if the key exist
-            for c in self.toshow:
+            for c in self.show:
                 if c not in base:
-                    self.toshow.remove(c)
+                    self.show.remove(c)
 
-            for c in range(len(self.toshow)):
+            for c in range(len(self.show)):
                 print(f'{self.toshow[c]}: {base[self.toshow[c]]}')
             print('')
