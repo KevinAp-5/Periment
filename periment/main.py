@@ -1,4 +1,4 @@
 from theclass import Periment
-
-peri = Periment(rang=10)
-peri.show()
+show = ['name', 'symbol', 'number']
+peri = Periment(show=show, rang=10)
+peri.guess()
