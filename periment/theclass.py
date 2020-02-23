@@ -1,8 +1,9 @@
+from random import shuffle
 import json
 
 
 class Periment:
-    def __init__(self, show='', guess='', rang=118):
+    def __init__(self, show='', guess='', random=False, rang=118):
         # Json path
         self.file = '/home/kevin/Periment/periment/PeriodicTableJSON.json'
         self.a = guess
@@ -20,6 +21,7 @@ class Periment:
         for counter in range(self.rang):
             base = data['elements'][counter]
             print('-' * 30)
+
             # checks if the key exist
             for show_elements in self.b:
                 if show_elements not in base:
@@ -29,23 +31,35 @@ class Periment:
                 print(f'{self.b[loop]}: {base[self.b[loop]]}')
             print('')
 
-    def guess(self):
+    def guess(self, random=False):
         if self.a == [''] or self.a == '':
             self.a = ['name', 'symbol', 'number']
+
+        if random is True:
+            random_number = list(range(0, 119))
+            shuffle(random_number)
 
         with open(self.file) as jsonnn:
             data = json.load(jsonnn)
 
-        show = input('What to show?: ').strip()
+        show = input('What to ask?: ').strip()
 
         for counter in range(self.rang):
-            base = data['elements'][counter]
+            # Randomize the elements
+            if random is True:
+                for i in random_number:
+                    base = data['elements'][i]
+                    random_number.remove(i)
+            else:
+                base = data['elements'][counter]
 
             if show not in base:
                 print(f"Error! {show} doesn't exist")
                 break
 
             print(f'{show}: {base[show]}')
+
+            # Remove the chosen option
             try:
                 self.a.remove(show)
             except Exception:
