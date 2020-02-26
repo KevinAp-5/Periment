@@ -1,4 +1,5 @@
 from theclass import Periment
 
-peri = Periment(rang=3)
+peri = Periment(rang=20)
+# peri.show(True)
 peri.guess(True)
