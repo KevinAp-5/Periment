@@ -51,6 +51,7 @@ class Periment:
 
         show = input('What to ask?: ').strip()
 
+        hit_counter = 0
         for counter in range(self.rang):
             # Randomize the elements
             if random is True:
@@ -87,7 +88,9 @@ class Periment:
                     answer = float(answer)
 
                 if answer == it:
-                    print('You got it')
+                    hit_counter += 1
+                    print(f'You got it\nhits: {hit_counter}')
                 else:
                     print(f'Wrong. {it}')
+            print(f'You hit {hit_counter} elements!')
             print('')
