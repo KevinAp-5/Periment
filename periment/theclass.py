@@ -89,7 +89,7 @@ class Periment:
 
                 if answer == it:
                     hit_counter += 1
-                    print(f'You got it\nhits: {hit_counter}')
+                    print(f'You got it!\n')
                 else:
                     print(f'Wrong. {it}')
             print(f'You hit {hit_counter} elements!')
