@@ -1,4 +1,5 @@
 from random import shuffle
+from time import sleep
 import json
 
 
@@ -15,7 +16,7 @@ class Periment:
         if self.b == [''] or self.b == '':
             self.b = ['name', 'symbol', 'number', 'category', 'summary']
 
-    def show(self, random=False, random_range=119):
+    def show(self, random=False, random_range=119, animation=False):
         with open(self.file) as jsonnn:
             data = json.load(jsonnn)
 
@@ -30,7 +31,15 @@ class Periment:
                 base = data['elements'][random_number[counter]]
             else:
                 base = data['elements'][counter]
-            print('-' * 30)
+
+            if animation is True:
+                string = '-' * 30
+                for a in string:
+                    print(a, end='', flush=True)
+                    sleep(0.03)
+                print()
+            else:
+                print('-' * 30)
 
             # check if the key exist in json
             for show_elements in self.b:

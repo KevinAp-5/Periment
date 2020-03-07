@@ -1,5 +1,5 @@
 from theclass import Periment
 
 peri = Periment(rang=20)  # Range 'til stop
-peri.show(True)
+peri.show(True, animation=False)
 peri.guess()
