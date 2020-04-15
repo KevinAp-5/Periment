@@ -1,22 +1,30 @@
 from random import shuffle
 from time import sleep
 import json
+from sys import argv
+def anima():
+    string = '-' * 30
+    for a in string:
+        print(a, end='', flush=True)
+        sleep(0.03)
+    print()
 
 
 class Periment:
     def __init__(self, show='', guess='', random=False, rang=118):
         # Json path
-        self.file = '/home/kevin/Periment/periment/PeriodicTableJSON.json'
+        self.file = '/home/kevin/python/Periment/periment/PeriodicTableJSON.json'
         self.a = guess
-        self.rang = rang
         self.b = show
+        self.rang = rang
 
         if self.a == [''] or self.a == '':
             self.a = ['name', 'symbol', 'number']
         if self.b == [''] or self.b == '':
             self.b = ['name', 'symbol', 'number', 'category', 'summary']
 
-    def show(self, random=False, random_range=119, animation=False):
+
+    def show(self, animation=False, random=False, random_range=119):
         with open(self.file) as jsonnn:
             data = json.load(jsonnn)
 
@@ -33,11 +41,7 @@ class Periment:
                 base = data['elements'][counter]
 
             if animation is True:
-                string = '-' * 30
-                for a in string:
-                    print(a, end='', flush=True)
-                    sleep(0.03)
-                print()
+                anima()
             else:
                 print('-' * 30)
 
@@ -60,7 +64,6 @@ class Periment:
 
         show = input('What to ask?: ').strip()
 
-        hit_counter = 0
         for counter in range(self.rang):
             # Randomize the elements
             if random is True:
@@ -97,9 +100,27 @@ class Periment:
                     answer = float(answer)
 
                 if answer == it:
-                    hit_counter += 1
                     print(f'You got it!\n')
                 else:
                     print(f'Wrong. {it}')
-            print(f'You hit {hit_counter} elements!')
             print('')
+
+    def returning(self, called, name, animation=True):
+        if type(name) == str:
+            name = name.capitalize()
+
+        with open(self.file) as jsonnn:
+            data = json.load(jsonnn)
+
+        for counter in range(self.rang):
+            base = data['elements'][counter]
+            if not base[called] != name:
+                if animation is True:
+                    anima()
+                else:
+                    print('-' * 30)
+
+                for loop in range(len(self.b)):
+                    print(f'{self.b[loop]}: {base[self.b[loop]]}')
+                print('')
+                break
