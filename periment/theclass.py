@@ -2,8 +2,9 @@ from random import shuffle
 from time import sleep
 import json
 from sys import argv
+from os.path import expanduser
 
-def anima():
+def anima():  # Func to make a animation with the lines
     string = '-' * 30
     for a in string:
         print(a, end='', flush=True)
@@ -14,7 +15,7 @@ def anima():
 class Periment:
     def __init__(self, show='', guess='', random=False, rang=118):
         # Json path
-        self.file = '/home/kevin/python/Periment/periment/PeriodicTableJSON.json'
+        self.file = expanduser('~/Periment/periment/PeriodicTableJSON.json')
         self.a = guess
         self.b = show
         self.rang = rang
@@ -24,7 +25,7 @@ class Periment:
         if self.b == [''] or self.b == '':
             self.b = ['name', 'symbol', 'number', 'category', 'summary']
 
-        with open(self.file) as jsonnn:
+        with open(self.file) as jsonnn:  # Open the json
             self.data = json.load(jsonnn)
 
     def show(self, animation=False, random=False, random_range=119):
@@ -107,6 +108,7 @@ class Periment:
                 if animation is True: anima()
                 else: print('-' * 30)
 
+                # Shows the keys and values
                 for loop in range(len(self.b)):
                     print(f'{self.b[loop]}: {base[self.b[loop]]}')
                 print('')

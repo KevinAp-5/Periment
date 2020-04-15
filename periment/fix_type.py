@@ -1,4 +1,4 @@
-def fix_type(a):
+def fix_type(a):  # Fix the type error caused by argv, argv only returns str
 	for x in range(len(a)):
 		if a[x] == 'True':
 			a[x] = True
