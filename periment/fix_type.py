@@ -1,5 +1,7 @@
 def fix_type(a):  # Fix the type error caused by argv, argv only returns str
 	for x in range(len(a)):
+		""" Get a list and fix the type errors
+		"""
 		if a[x] == 'True':
 			a[x] = True
 		if a[x] == 'False':
