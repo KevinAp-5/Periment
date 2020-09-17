@@ -4,13 +4,6 @@ import json
 from sys import argv
 from os.path import expanduser
 
-def anima():  # Func to make a animation with the lines
-    string = '-' * 30
-    for a in string:
-        print(a, end='', flush=True)
-        sleep(0.03)
-    print()
-
 
 class Periment:
     def __init__(self, show='', guess='', random=False, rang=118):
@@ -27,6 +20,13 @@ class Periment:
 
         with open(self.file) as jsonnn:  # Open the json
             self.data = json.load(jsonnn)
+
+    @staticmethod
+    def anima(cls):
+        for x in ('-' * 50):
+            print(x, end='', flush=True)
+            sleep(0.03)
+        print()
 
     def show(self, animation=False, random=False, random_range=119):
         if random is True:
