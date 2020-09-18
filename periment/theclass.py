@@ -2,13 +2,14 @@ from random import shuffle
 from time import sleep
 import json
 from sys import argv
-from os.path import expanduser
+from os import getcwd
 
 
 class Periment:
-    def __init__(self, show='', guess='', random=False, rang=118):
+    def __init__(self, show='', guess='', random=False, rang=118,
+                path=f'{getcwd()}/PeriodicTableJSON.json'):
         # Json path
-        self.file = expanduser('~/Periment/periment/PeriodicTableJSON.json')
+        self.path = path
         self.a = guess
         self.b = show
         self.rang = rang
@@ -17,9 +18,11 @@ class Periment:
             self.a = ['name', 'symbol', 'number']
         if self.b == [''] or self.b == '':
             self.b = ['name', 'symbol', 'number', 'category', 'summary']
-
-        with open(self.file) as jsonnn:  # Open the json
-            self.data = json.load(jsonnn)
+        try:
+            with open(self.path) as jsonnn:  # Open the json
+                self.data = json.load(jsonnn)
+        except FileNotFoundError:
+            print("Check the path of PeriodicTable or insert it on 'path'.")
 
     @staticmethod
     def anima(cls):
