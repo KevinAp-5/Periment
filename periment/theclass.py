@@ -1,7 +1,6 @@
 from random import shuffle
 from time import sleep
 import json
-from sys import argv
 from os import getcwd
 
 
