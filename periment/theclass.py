@@ -76,7 +76,6 @@ class Periment:
             if show not in base:
                 print(f"Error! {show} doesn't exist")
                 break
-
             print(f'{show}: {base[show]}')
 
             # Remove the chosen option
@@ -88,7 +87,11 @@ class Periment:
             for loop in range(len(self.a)):
                 it = base[self.a[loop]]
                 print('-' * 30)
-                answer = input(f'{self.a[loop]}: ').strip()
+                try:
+                    answer = input(f'{self.a[loop]}: ').strip()
+                except KeyboardInterrupt:
+                    print('\nGoodBye!')
+                    exit()
 
                 if answer.isdigit() and type(it) == int:
                     answer = int(answer)
@@ -103,7 +106,6 @@ class Periment:
 
     def returning(self, called, name, animation=True):
         if type(name) == str: name = name.capitalize()
-
         for counter in range(self.rang):
             base = self.data['elements'][counter]
 
