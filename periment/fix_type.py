@@ -1,14 +1,13 @@
-def fix_type(a):  # Fix the type error caused by argv, argv only returns str
-	for x in range(len(a)):
-		""" Get a list and fix the type errors
-		"""
-		if a[x] == 'True':
-			a[x] = True
-		if a[x] == 'False':
-			a[x] = False
-		try:
-			if a[x].isdigit() is True:
-				a[x] = float(a[x])
-		except Exception:
-			pass
-	return a
+def fix_type(argv):  #Fix TypeError caused by argv, agrv returns str
+    for x in range(len(argv)):
+        """ Get a list and fix the type errors"""
+        if argv[x] == 'True': argv[x] = True
+        if argv[x] == 'False': argv[x] = False
+
+        try:
+            if argv[x].isdigit() is True:
+                argv[x] = float(argv[x])
+        except Exception:
+            raise
+        return argv
+
