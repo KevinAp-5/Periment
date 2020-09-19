@@ -25,7 +25,7 @@ class Periment:
             print("Check the path of PeriodicTable or insert it on 'path'.")
 
     @staticmethod
-    def anima(cls):
+    def anima():
         for x in ('-' * 50):
             print(x, end='', flush=True)
             sleep(0.03)
@@ -43,7 +43,7 @@ class Periment:
                 base = self.data['elements'][random_number[counter]]
             else: base = self.data['elements'][counter]
 
-            if animation is True: anima()
+            if animation is True: self.anima()
             else: print('-' * 30)
 
             # check if the key exist in json
@@ -108,7 +108,7 @@ class Periment:
             base = self.data['elements'][counter]
 
             if not base[called] != name:
-                if animation is True: anima()
+                if animation is True: self.anima()
                 else: print('-' * 30)
 
                 # Shows the keys and values
