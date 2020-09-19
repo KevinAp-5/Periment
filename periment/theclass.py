@@ -101,6 +101,8 @@ class Periment:
                     print(f'You got it!')
                 else:
                     print(f'Wrong. {it}')
+                    if answer.upper() == it:
+                        print('You have to use uppercase too...')
             print('')
 
     def returning(self, called, name, animation=True):
