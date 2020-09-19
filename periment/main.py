@@ -7,12 +7,8 @@ command = fix_type(command)
 
 try:
     peri = Periment()  # Range 'til stop
-    if command[0] == 'show':
-        peri.show(*command[1:])
-    elif command[0] == 'guess':
-        peri.guess(*command[1:])
-    elif command[0] == 'returning':
-        peri.returning(*command[1:])
+    if command[0] in ('show', 'guess', 'returning'):
+        exec(f'peri.{command[0]}(*command[1:])')
     else:
         raise ValueError('Invalid function.')
 

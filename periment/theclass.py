@@ -54,7 +54,7 @@ class Periment:
                 print(f'{self.b[loop]}: {base[self.b[loop]]}')
             print('')
 
-    def guess(self, random=False, random_range=119):
+    def guess(self, random=False, random_range=118):
         if random is True:
             random_number = list(range(0, random_range))
             shuffle(random_number)
@@ -96,9 +96,9 @@ class Periment:
                     answer = int(answer)
                 elif answer.isdigit() and type(it) == float:
                     answer = float(answer)
-
+                
                 if answer == it:
-                    print(f'You got it!\n')
+                    print(f'You got it!')
                 else:
                     print(f'Wrong. {it}')
             print('')
