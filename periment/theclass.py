@@ -1,7 +1,7 @@
-from random import shuffle
-from time import sleep
 import json
 from os import getcwd
+from time import sleep
+from random import shuffle
 
 
 class Periment:
@@ -13,15 +13,18 @@ class Periment:
         self.b = show
         self.rang = rang
 
-        if self.a == [''] or self.a == '':
+        if self.a in ([''], ''):
             self.a = ['name', 'symbol', 'number']
-        if self.b == [''] or self.b == '':
+        if self.b in ([''], ''):
             self.b = ['name', 'symbol', 'number', 'category', 'summary']
+
         try:
-            with open(self.path) as jsonnn:  # Open the json
-                self.data = json.load(jsonnn)
+            with open(self.path) as table:  # Open the json
+                self.data = json.load(table)
         except FileNotFoundError:
             print("Check the path of PeriodicTable or insert it on 'path'.")
+        except:
+            pass
 
     @staticmethod
     def anima():
@@ -40,7 +43,8 @@ class Periment:
             # Random mode
             if random is True:
                 base = self.data['elements'][random_number[counter]]
-            else: base = self.data['elements'][counter]
+            else:
+                base = self.data['elements'][counter]
 
             if animation is True: self.anima()
             else: print('-' * 30)
@@ -65,7 +69,8 @@ class Periment:
             # Randomize the elements
             if random is True:
                 base = self.data['elements'][random_number[counter]]
-            else: base = self.data['elements'][counter]
+            else:
+                base = self.data['elements'][counter]
 
             # check if the key exist in json
             for keys in self.a:
@@ -75,6 +80,7 @@ class Periment:
             if show not in base:
                 print(f"Error! {show} doesn't exist")
                 break
+
             print(f'{show}: {base[show]}')
 
             # Remove the chosen option
@@ -86,17 +92,18 @@ class Periment:
             for loop in range(len(self.a)):
                 it = base[self.a[loop]]
                 print('-' * 30)
+
                 try:
                     answer = input(f'{self.a[loop]}: ').strip()
                 except KeyboardInterrupt:
                     print('\nGoodBye!')
                     exit()
 
-                if answer.isdigit() and type(it) == int:
+                if isinstance(it, int):
                     answer = int(answer)
-                elif answer.isdigit() and type(it) == float:
+                elif isinstance(it, float):
                     answer = float(answer)
-                
+
                 if answer == it:
                     print(f'You got it!')
                 else:
