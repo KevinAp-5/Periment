@@ -5,19 +5,19 @@ from random import shuffle
 
 
 class Periment:
-    def __init__(self, show='', guess='', random=False, rang=118, path=None):
+    def __init__(self, path=None):
         # Json path
         if path is None:
             self.path = f'{getcwd()}/PeriodicTableJSON.json'
         else:
             self.path = path
 
-        self.a = guess
-        self.b = show
-        self.rang = rang
+        self.guess_filter = ''
+        self.b = ''
+        self.ranger = 188
 
-        if self.a in ([''], ''):
-            self.a = ['name', 'symbol', 'number']
+        if self.guess_filter in ([''], ''):
+            self.guess_filter = ['name', 'symbol', 'number']
         if self.b in ([''], ''):
             self.b = ['name', 'symbol', 'number', 'category', 'summary']
 
@@ -26,8 +26,8 @@ class Periment:
                 self.data = json.load(table)
         except FileNotFoundError:
             print("Check the path of PeriodicTable or insert it on 'path'.")
-        except:
-            pass
+        except Exception as error:
+            print(f'Occurred a error: {error}')
 
     @staticmethod
     def anima():
