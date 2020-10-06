@@ -5,10 +5,13 @@ from random import shuffle
 
 
 class Periment:
-    def __init__(self, show='', guess='', random=False, rang=118,
-                path=f'{getcwd()}/PeriodicTableJSON.json'):
+    def __init__(self, show='', guess='', random=False, rang=118, path=None):
         # Json path
-        self.path = path
+        if path is None:
+            self.path = f'{getcwd()}/PeriodicTableJSON.json'
+        else:
+            self.path = path
+
         self.a = guess
         self.b = show
         self.rang = rang
