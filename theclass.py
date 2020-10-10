@@ -14,7 +14,7 @@ class Periment:
 
         self.guess_filter = ''
         self.b = ''
-        self.ranger = 188
+        self.rangerer = 118
 
         if self.guess_filter in ([''], ''):
             self.guess_filter = ['name', 'symbol', 'number']
@@ -42,14 +42,15 @@ class Periment:
             shuffle(random_number)
 
         # Loop to show the elements
-        for counter in range(self.rang):
+        for counter in range(self.ranger):
             # Random mode
             if random is True:
                 base = self.data['elements'][random_number[counter]]
             else:
                 base = self.data['elements'][counter]
 
-            if animation is True: self.anima()
+            if animation is True:
+                self.anima()
             else: print('-' * 30)
 
             # check if the key exist in json
@@ -68,7 +69,7 @@ class Periment:
 
         show = input('What to ask?: ').strip()
 
-        for counter in range(self.rang):
+        for counter in range(self.ranger):
             # Randomize the elements
             if random is True:
                 base = self.data['elements'][random_number[counter]]
@@ -76,9 +77,9 @@ class Periment:
                 base = self.data['elements'][counter]
 
             # check if the key exist in json
-            for keys in self.a:
+            for keys in self.guess_filter:
                 if keys not in base:
-                    self.a.remove(keys)
+                    self.guess_filter.remove(keys)
 
             if show not in base:
                 print(f"Error! {show} doesn't exist")
@@ -88,16 +89,16 @@ class Periment:
 
             # Remove the chosen option
             try:
-                self.a.remove(show)
+                self.guess_filter.remove(show)
             except Exception:
                 pass
 
-            for loop in range(len(self.a)):
-                it = base[self.a[loop]]
+            for loop in range(len(self.guess_filter)):
+                it = base[self.guess_filter[loop]]
                 print('-' * 30)
 
                 try:
-                    answer = input(f'{self.a[loop]}: ').strip()
+                    answer = input(f'{self.guess_filter[loop]}: ').strip()
                 except KeyboardInterrupt:
                     print('\nGoodBye!')
                     exit()
@@ -117,11 +118,11 @@ class Periment:
 
     def returning(self, called, name, animation=True):
         if type(name) == str: name = name.capitalize()
-        for counter in range(self.rang):
+        for counter in range(self.ranger):
             base = self.data['elements'][counter]
 
             if not base[called] != name:
-                if animation is True: self.anima()
+                if animation is True: self.guess_filternima()
                 else: print('-' * 30)
 
                 # Shows the keys and values

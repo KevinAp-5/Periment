@@ -8,12 +8,14 @@ command = fix_type(command)
 try:
     peri = Periment()  # Range 'til stop
     if command[0] in ('show', 'guess', 'returning'):
-        exec(f'peri.{command[0]}(*command[1:])')
+        command.pop(0)
+        peri.returning(*command)
     else:
         raise ValueError('Invalid function.')
 
 except Exception:
-    peri = Periment(rang=10)
+    peri = Periment()
+    peri.ranger = 10
     peri.show(animation=True)
     peri.guess(random=True)
 
