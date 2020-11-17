@@ -32,18 +32,16 @@ class Periment:
             sleep(0.03)
         print()
 
-    def show(self, animation=False, random=False, random_range=119):
+    def show(self, animation=False, random=False, _range=119):
         if random is True:
-            random_number = list(range(0, random_range))
-            shuffle(random_number)
+            list_number = list(range(0, _range))
+            shuffle(list_number)
+        else:
+            list_number = list(range(self._range))
 
         # Loop to show the elements
-        for counter in range(self.ranger):
-            # Random mode
-            if random is True:
-                base = self.data['elements'][random_number[counter]]
-            else:
-                base = self.data['elements'][counter]
+        for counter in list_number:
+            base = self.data['elements'][counter]
 
             if animation is True:
                 self.anima()
