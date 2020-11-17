@@ -12,14 +12,10 @@ class Periment:
         else:
             self.path = path
 
-        self.guess_filter = ''
-        self.b = ''
-        self.rangerer = 118
+        self.filter = ''
 
-        if self.guess_filter in ([''], ''):
-            self.guess_filter = ['name', 'symbol', 'number']
-        if self.b in ([''], ''):
-            self.b = ['name', 'symbol', 'number', 'category', 'summary']
+        if self.filter in ([''], ''):
+            self.filter = ['name', 'symbol', 'number', 'category', 'summary']
 
         try:
             with open(self.path) as table:  # Open the json
