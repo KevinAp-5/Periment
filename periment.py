@@ -23,13 +23,17 @@ class Periment:
         except FileNotFoundError:
             print("Check the path of PeriodicTable or insert it on 'path'.")
         except Exception as error:
-            print(f'Occurred a error: {error}')
+            print(f'Occurred an error: {error}')
 
     @staticmethod
     def anima():
         for x in ('-' * 50):
             print(x, end='', flush=True)
-            sleep(0.03)
+            try:
+                sleep(0.03)
+            except KeyboardInterrupt:
+                print()
+                exit()
         print()
 
     def show(self, animation=False, random=False, _range=119):
@@ -37,7 +41,7 @@ class Periment:
             list_number = list(range(0, _range))
             shuffle(list_number)
         else:
-            list_number = list(range(self._range))
+            list_number = list(range(_range))
 
         # Loop to show the elements
         for counter in list_number:
@@ -74,3 +78,6 @@ class Periment:
                     print(f'{self.filter[loop]}: {base[self.filter[loop]]}')
                 print('')
                 break
+
+    def set_filter(self, *args):
+        self.filter = args

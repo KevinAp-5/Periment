@@ -5,6 +5,8 @@ from sys import argv
 command = fix_type(argv[1:])
 
 periment = Periment()
+# periment.set_filter('name', 'number', 'symbol', 'summary')  # Custom filter
+
 if command[0] == 'show':
     periment.show(*command[1:])
 elif command[0] == 'returning':
