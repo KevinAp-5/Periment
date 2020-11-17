@@ -1,4 +1,4 @@
-from theclass import Periment
+from periment import Periment
 from fix_type import fix_type
 from sys import argv
 
@@ -10,4 +10,4 @@ if command[0] == 'show':
 elif command[0] == 'returning':
     periment.returning(*command[1:])
 else:
-    print('Invalid command.')
+    print('Invalid command.\ncommands: returning, show')
