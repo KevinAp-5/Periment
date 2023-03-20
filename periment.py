@@ -30,13 +30,13 @@ class Periment:
         for x in ('-' * 50):
             print(x, end='', flush=True)
             try:
-                sleep(0.03)
+                sleep(0.02)
             except KeyboardInterrupt:
                 print()
                 exit()
         print()
 
-    def show(self, animation=False, random=False, _range=119):
+    def show(self, _range=119, animation=False, random=False):
         if random is True:
             list_number = list(range(0, _range))
             shuffle(list_number)
@@ -52,32 +52,38 @@ class Periment:
             else:
                 print('-' * 30)
 
-            # check if the key exist in json
+            # check if the key exists in json
             for show_elements in self.filter:
                 if show_elements not in base:
                     self.filter.remove(show_elements)
 
             for loop in range(len(self.filter)):
                 print(f'{self.filter[loop]}: {base[self.filter[loop]]}')
-            print('')
+
+            if animation is True:
+                sleep(2)
+            print()
 
     def returning(self, called, name, animation=False):
         if type(name) == str:
             name = name.capitalize()
+
         for counter in range(len(self.data['elements'])):
             base = self.data['elements'][counter]
-
             if not base[called] != name:
                 if animation is True:
                     self.anima()
                 else:
                     print('-' * 30)
 
-                # Shows the keys and values
+                # Show the keys and values
                 for loop in range(len(self.filter)):
                     print(f'{self.filter[loop]}: {base[self.filter[loop]]}')
-                print('')
+                if animation is True:
+                    sleep(2)
+                print()
                 break
 
     def set_filter(self, *args):
         self.filter = args
+
