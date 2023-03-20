@@ -10,12 +10,12 @@ periment = Periment()
 
 try:
     if command[0] == 'show':
-        periment.show(*command[1:])
-    elif command[0] == 'returning':
-        periment.returning(*command[1:])
+        command.pop(0)
+        periment.show(*command)
+    elif command[0] == 'return':
+        command.pop(0)
+        periment.returning(*command)
     else:
-        print('Invalid command.\ncommands: returning, show')
+        print('Invalid command.\ncommands: return, show')
 except IndexError:
-    command.append('show')
-    command.append(randint(1, 119))
-    periment.show(*command[1:])
+    periment.show(random=True, animation=True)
