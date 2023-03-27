@@ -22,8 +22,6 @@ class Periment:
                 self.data = json.load(table)
         except FileNotFoundError:
             print("Check the path of PeriodicTable or insert it on 'path'.")
-        except Exception as error:
-            print(f'Occurred an error: {error}')
 
     @staticmethod
     def anima():
