@@ -6,16 +6,12 @@ from random import shuffle
 
 class Periment:
     def __init__(self, path=None):
-        # Json path
         if path is None:
             self.path = f'{getcwd()}/PeriodicTableJSON.json'
         else:
             self.path = path
 
-        self.filter = ''
-
-        if self.filter in ([''], ''):
-            self.filter = ['name', 'symbol', 'number', 'category', 'summary']
+        self.filter = ['name', 'symbol', 'number', 'category', 'summary']
 
         try:
             with open(self.path) as table:  # Open the json
