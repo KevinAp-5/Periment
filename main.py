@@ -1,5 +1,4 @@
 from periment import Periment
-from random import randint
 from sys import argv
 
 
@@ -23,7 +22,6 @@ periment = Periment()
 argv = fix_type(argv[1:])
 if len(argv) == 0:
     argv.append('show')
-
 command = argv.pop(0)
 
 if command == 'show':
