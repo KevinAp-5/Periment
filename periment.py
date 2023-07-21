@@ -20,13 +20,14 @@ class Periment:
             print("Check the path of PeriodicTable or insert it on 'path'.")
 
     @staticmethod
-    def anima():
-        for x in ('-' * 50):
-            print(x, end='', flush=True)
+    def anima(slow=True):
+        sleep_time = 0 if slow is False else 0.02
+
+        for item in ('-' * 50):
+            print(item, end='', flush=True)
             try:
-                sleep(0.02)
+                sleep(sleep_time)
             except KeyboardInterrupt:
-                print()
                 exit()
         print()
 
@@ -40,11 +41,7 @@ class Periment:
         # Loop to show the elements
         for counter in list_number:
             base = self.data['elements'][counter]
-
-            if animation is True:
-                self.anima()
-            else:
-                print('-' * 30)
+            self.anima(slow=animation)
 
             # check if the key exists in json
             for show_elements in self.filter:
@@ -65,11 +62,7 @@ class Periment:
         for counter in range(len(self.data['elements'])):
             base = self.data['elements'][counter]
             if not base[called] != name:
-                if animation is True:
-                    self.anima()
-                else:
-                    print('-' * 30)
-
+                self.anima(slow=animation)
                 # Show the keys and values
                 for loop in range(len(self.filter)):
                     print(f'{self.filter[loop]}: {base[self.filter[loop]]}')
