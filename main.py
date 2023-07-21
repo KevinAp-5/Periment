@@ -2,6 +2,7 @@ from periment import Periment
 from random import randint
 from sys import argv
 
+
 def fix_type(argv):  # Fix TypeError caused by argv, agrv returns str
     """ Get a list and fix the type errors"""
 
@@ -15,19 +16,20 @@ def fix_type(argv):  # Fix TypeError caused by argv, agrv returns str
             new_argv.append(item)
     return new_argv
 
-command = fix_type(argv[1:])
 
 periment = Periment()
 # periment.set_filter('name', 'number', 'symbol', 'summary')  # Custom filter
 
-try:
-    if command[0] == 'show':
-        command.pop(0)
-        periment.show(*command)
-    elif command[0] == 'return':
-        command.pop(0)
-        periment.returning(*command)
-    else:
-        print('Invalid command.\ncommands: return, show')
-except IndexError:
+argv = fix_type(argv[1:])
+if len(argv) == 0:
+    argv.append('show')
+
+command = argv.pop(0)
+
+if command == 'show':
+    periment.show(*argv)
+elif command == 'return':
+    periment.returning(*argv)
+else:
     periment.show(random=True, animation=True)
+
