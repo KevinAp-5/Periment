@@ -4,16 +4,16 @@ from sys import argv
 
 def fix_type(argv):  # Fix TypeError caused by argv, agrv returns str
     """ Get a list and fix the type errors"""
-    for x in range(len(argv)):
-        if isinstance(argv[x], str):
-            if argv[x].isnumeric() is True:
-                argv[x] = int(argv[x])
-            elif '.' in argv[x]:
-                argv[x] = float(argv[x])
-            elif argv[x] == 'True' or argv[x] == 'False':
-                argv[x] = bool(argv[x])
 
-    return argv
+    new_argv = []
+    for index, item in enumerate(argv):
+        if index == 1:
+            new_argv.append(int(item))
+        elif index == 2:
+            new_argv.append(True if item.lower() == 'true' else False)
+        else:
+            new_argv.append(item)
+    return new_argv
 
 command = fix_type(argv[1:])
 
