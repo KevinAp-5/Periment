@@ -40,17 +40,18 @@ class Periment:
             new_elements.update({element_filter: elements.get(element_filter)})
         return new_elements
 
-            # check if the key exists in json
-            for show_elements in self.filter:
-                if show_elements not in base:
-                    self.filter.remove(show_elements)
+    def show(self, index_limit, animation=False, random=False):
+        index_limit = self.index_fixer(index_limit)+1
 
-            for loop in range(len(self.filter)):
-                print(f'{self.filter[loop]}: {base[self.filter[loop]]}')
+        element_base = self.data['elements']
+        if random:
+            shuffle(element_base)
+        element_base = element_base[0:index_limit]
 
-            if animation is True:
-                sleep(2)
-            print()
+        for element in element_base:
+            self.anima(animation)
+            for label, content in self.filter_element(element).items():
+                print(f'{label}: {content}')
 
     def returning(self, index, animation=True):
         element = self.data['elements'][118 if index >= 120 else index-1]
