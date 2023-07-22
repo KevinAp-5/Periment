@@ -20,6 +20,7 @@ class Periment:
                 return json.load(table)
         except FileNotFoundError:
             print("Check the path of PeriodicTable or insert it on 'path'.")
+            exit()
 
     @staticmethod
     def anima(slow=True):
