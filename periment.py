@@ -19,13 +19,11 @@ class Periment:
             exit()
 
     @staticmethod
-    def anima(slow=True):
-        sleep_time = 0 if slow is False else 0.02
-
+    def anima(speed=True):
         for item in ('-' * 50):
             print(item, end='', flush=True)
             try:
-                sleep(sleep_time)
+                sleep(0 if speed is False else 0.02)
             except KeyboardInterrupt:
                 exit()
         print()
