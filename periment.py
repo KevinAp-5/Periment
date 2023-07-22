@@ -5,12 +5,8 @@ from random import shuffle
 
 
 class Periment:
-    def __init__(self, path=None):
-        if path is None:
-            self.path = f'{getcwd()}/PeriodicTableJSON.json'
-        else:
-            self.path = path
-
+    def __init__(self):
+        self.path = f'{getcwd()}/PeriodicTableJSON.json'
         self.filter = ['name', 'symbol', 'number', 'category', 'summary']
         self.data = self.open_file()
 
