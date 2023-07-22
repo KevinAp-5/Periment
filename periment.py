@@ -54,11 +54,9 @@ class Periment:
                 print(f'{label}: {content}')
 
     def returning(self, index, animation=True):
-        element = self.data['elements'][118 if index >= 120 else index-1]
+        element = self.data['elements'][self.index_fixer(index)]
 
-        new_elements = dict()
-        for element_filter in self.filter:
-            new_elements.update({element_filter: element.get(element_filter)})
+        new_elements = self.filter_elements(element)
 
         self.anima(animation)
         for label, content in new_elements.items():
@@ -67,3 +65,4 @@ class Periment:
 
     def set_filter(self, *args):
         self.filter = args
+
