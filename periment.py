@@ -12,10 +12,12 @@ class Periment:
             self.path = path
 
         self.filter = ['name', 'symbol', 'number', 'category', 'summary']
+        self.data = self.open_file()
 
+    def open_file(self):
         try:
             with open(self.path) as table:  # Open the json
-                self.data = json.load(table)
+                return json.load(table)
         except FileNotFoundError:
             print("Check the path of PeriodicTable or insert it on 'path'.")
 
