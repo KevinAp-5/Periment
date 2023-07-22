@@ -58,22 +58,17 @@ class Periment:
                 sleep(2)
             print()
 
-    def returning(self, called, name, animation=False):
-        if type(name) == str:
-            name = name.capitalize()
+    def returning(self, index, animation=True):
+        element = self.data['elements'][118 if index >= 120 else index-1]
 
-        for counter in range(len(self.data['elements'])):
-            base = self.data['elements'][counter]
-            if not base[called] != name:
-                self.anima(slow=animation)
-                # Show the keys and values
-                for loop in range(len(self.filter)):
-                    print(f'{self.filter[loop]}: {base[self.filter[loop]]}')
-                if animation is True:
-                    sleep(2)
-                print()
-                break
+        new_elements = dict()
+        for element_filter in self.filter:
+            new_elements.update({element_filter: element.get(element_filter)})
+
+        self.anima(animation)
+        for label, content in new_elements.items():
+            print(f'{label}: {content}')
+        self.anima(animation)
 
     def set_filter(self, *args):
         self.filter = args
-
