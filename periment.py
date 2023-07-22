@@ -34,10 +34,11 @@ class Periment:
         else:
             return index-1
 
-        # Loop to show the elements
-        for counter in list_number:
-            base = self.data['elements'][counter]
-            self.anima(slow=animation)
+    def filter_element(self, elements):
+        new_elements = dict()
+        for element_filter in self.filter:
+            new_elements.update({element_filter: elements.get(element_filter)})
+        return new_elements
 
             # check if the key exists in json
             for show_elements in self.filter:
