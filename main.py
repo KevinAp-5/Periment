@@ -20,10 +20,9 @@ periment = Periment()
 # periment.set_filter('name', 'number', 'symbol', 'summary')  # Custom filter
 
 argv = fix_type(argv[1:])
-if len(argv) == 0:
-    argv.append('show')
-command = argv.pop(0)
+if len(argv) == 0: argv.append('show')
 
+command = argv.pop(0)
 if command == 'show':
     periment.show(*argv)
 elif command == 'return':
