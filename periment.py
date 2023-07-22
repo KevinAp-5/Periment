@@ -28,12 +28,11 @@ class Periment:
                 exit()
         print()
 
-    def show(self, _range=119, animation=False, random=False):
-        if random is True:
-            list_number = list(range(0, _range))
-            shuffle(list_number)
+    def index_fixer(self, index):
+        if index >= 120:
+            return 118
         else:
-            list_number = list(range(_range))
+            return index-1
 
         # Loop to show the elements
         for counter in list_number:
