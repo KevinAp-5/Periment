@@ -17,10 +17,11 @@ def fix_type(argv):  # Fix TypeError caused by argv, agrv returns str
 
 
 periment = Periment()
-# periment.set_filter('name', 'number', 'symbol', 'summary')  # Custom filter
+periment.set_filter('name', 'number', 'symbol', 'summary')  # Custom filter
 
 argv = fix_type(argv[1:])
-if len(argv) == 0: argv.append('show')
+if len(argv) == 0:
+    argv.append('show')
 
 command = argv.pop(0)
 if command == 'show':
@@ -29,4 +30,3 @@ elif command == 'return':
     periment.returning(*argv)
 else:
     periment.show(random=True, animation=True)
-

@@ -65,4 +65,3 @@ class Periment:
 
     def set_filter(self, *args):
         self.filter = args
-
